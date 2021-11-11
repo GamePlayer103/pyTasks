@@ -27,3 +27,11 @@ class Menu():
 
         task = Task(title=title, description=description, end_date=end_date)
         print('New task added succesfully!')
+
+    def help(self):
+        """Prints help message"""
+        msg = ('pyTasks - simple program for managing daily tasks\n\n'
+                'Options:\n'
+                'help - displays help menu (like this one)\n'
+                'add_task - adds new task\n')
+        print(msg)
