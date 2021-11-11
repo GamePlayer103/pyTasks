@@ -1,5 +1,5 @@
-from task import Task
+from menu import Menu
 
-my_task = Task(title='Simple task', description='Example task long description', end_date='13/11/2021')
+menu = Menu()
 
-print(my_task.get_info())
+print(menu.get_welcome_message())
