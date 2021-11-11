@@ -2,4 +2,5 @@ from menu import Menu
 
 menu = Menu()
 
-print(menu.get_welcome_message())
+menu.welcome_message()
+menu.add_task()

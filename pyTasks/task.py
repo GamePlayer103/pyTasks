@@ -3,20 +3,30 @@ from datetime import datetime
 class Task():
     """Single task"""
     
-    def __init__(self, title, description='none', end_date='none'):
+    def __init__(self, title, description='', end_date=''):
         self.title = title
-        self.description = description
+
+        if(description != ''):
+            self.description = description
+        else:
+            self.description = 'none'
+
         current_date = datetime.now().strftime('%d/%m/%y')
-        self.create_date = current_date 
-        self.end_date = self.validate_date_format(end_date) 
-    
-    def validate_date_format(self, date_str):
-        """Validate and convert date format from string to datetime object"""
+        self.create_date = current_date
+
+        if(self.validate_date_format(end_date) == True):
+            self.end_date = end_date
+        else:
+            self.end_date = 'none'
+
+    @staticmethod
+    def validate_date_format(date_str):
+        """Validate date format from string""" 
         try:
             datetime_obj = datetime.strptime(date_str, '%d/%m/%y').strftime('%d/%m/%y')
-            return datetime_obj
+            return True
         except: 
-            return "Error"
+            return False
 
     def get_info(self):
         """Return informations about the task"""
