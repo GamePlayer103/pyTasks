@@ -8,12 +8,15 @@ args = sys.argv
 
 try:
     arg = args[1]
-
-    if(arg == 'help'):
-        menu.help()
-    elif(arg == 'add_task'):
-        menu.add_task()
-    else:
-        print('Wrong argument! Please try to use "help"')
 except:
     menu.welcome_message()
+    exit()
+
+if(arg == 'help'):
+    menu.help()
+elif(arg == 'add_task'):
+    menu.add_task()
+elif(arg == 'tasks'):
+    menu.display_tasks()
+else:
+    print('Wrong argument! Please try to use "help"')

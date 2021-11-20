@@ -1,5 +1,6 @@
 import getpass
 from task import Task
+import json
 
 class Menu():
     """Displays simple text menu, allowing user to manage tasks"""
@@ -37,3 +38,17 @@ class Menu():
                 'help - displays help menu (like this one)\n'
                 'add_task - adds new task\n')
         print(msg)
+
+    def get_tasks(self):
+        """Returns list of tasks from file"""
+        with open('tasks.json', 'r') as file:
+           data = json.load(file)
+        tasks = []
+        for x in data:
+            tasks.append(Task(x['title'], description=x['description'], end_date=x['end_date']))
+        return tasks 
+
+    def display_tasks(self):
+        """Prints tasks"""
+        for i in self.get_tasks():
+            print(i.get_info())
