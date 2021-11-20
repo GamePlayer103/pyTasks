@@ -4,7 +4,7 @@ import json
 class Task():
     """Single task"""
     
-    def __init__(self, title, description='', end_date=''):
+    def __init__(self, title, description='', end_date='', create_date=''):
         self.title = title
 
         if(description != ''):
@@ -12,8 +12,14 @@ class Task():
         else:
             self.description = 'none'
 
-        current_date = datetime.now().strftime('%d/%m/%y')
-        self.create_date = current_date
+        if(create_date != ''):
+            if(self.validate_date_format(create_date) == True):
+                self.create_date = create_date
+            else:
+                self.create_date = 'none'
+        else:
+            current_date = datetime.now().strftime('%d/%m/%y')
+            self.create_date = current_date
 
         if(self.validate_date_format(end_date) == True):
             self.end_date = end_date

@@ -45,7 +45,7 @@ class Menu():
            data = json.load(file)
         tasks = []
         for x in data:
-            tasks.append(Task(x['title'], description=x['description'], end_date=x['end_date']))
+            tasks.append(Task(x['title'], description=x['description'], end_date=x['end_date'], create_date=x['create_date']))
         return tasks 
 
     def display_tasks(self):
