@@ -26,6 +26,8 @@ class Menu():
                 break
 
         task = Task(title=title, description=description, end_date=end_date)
+        task.save_to_file()
+
         print('New task added succesfully!')
 
     def help(self):

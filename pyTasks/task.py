@@ -1,4 +1,5 @@
 from datetime import datetime
+import json
 
 class Task():
     """Single task"""
@@ -35,3 +36,16 @@ class Task():
                 f'Create date: {self.create_date}\n'
                 f'End date: {self.end_date}\n')
         return info
+
+    def save_to_file(self):
+        """Save task to JSON file"""
+        task_dict = {'title': self.title,
+                'description': self.description,
+                'end_date': self.end_date,
+                'create_date': self.create_date}
+
+        with open('tasks.json', 'r+') as file:
+            data = json.load(file)
+            data.append(task_dict)
+            file.seek(0)
+            json.dump(data, file)
